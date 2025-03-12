@@ -24,7 +24,7 @@ export async function authenticate(
     });
 
     // dica: colocar nome mais contextualizado
-    const x = await reply.jwtSign(
+    const userToken = await reply.jwtSign(
       {
         role: user.role,
       },
@@ -57,7 +57,7 @@ export async function authenticate(
         httpOnly: true,
       })
       .status(200)
-      .send({ x });
+      .send({ userToken });
   } catch (err) {
     if (err instanceof InvalidCredentialsError) {
       return reply.status(400).send({ message: err.message });
