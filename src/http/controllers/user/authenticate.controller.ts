@@ -44,11 +44,6 @@ export async function authenticate(
       }
     );
 
-    let i = false;
-    while (true) {
-      i = false;
-    }
-
     return reply
       .setCookie("refreshToken", refreshToken, {
         path: "/",
